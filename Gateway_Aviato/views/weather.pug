@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .page-header
+    h3 Please select the location details
+
+  form.form-horizontal(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label(class='col-sm-2 control-label', for='station') Station
+      .col-sm-8
+        select.form-control(name='station', id='station', autofocus='true')
+          - var options = [{value: 'KENX', label: 'KENX - Albany, NY'}, {value: 'KFFC', label: 'KFFC - Atlanta, GA'}, {value: 'KBOX', label: 'KBOX - Boston, MA'}, {value: 'KCLX', label: 'KCLX - Charleston, SC'}, {value: 'KLOT', label: 'KLOT - Chicago, IL'}, {value: 'KLRX', label: 'KLRX - Elko, NV'}, {value: 'KIND', label: 'KIND - Indianapolis, IN'}, {value: 'KESX', label: 'KESX - Las Vegas, NV'}, {value: 'KAMX', label: 'KAMX - Miami, FL'}, {value: 'KRTX', label: 'KRTX - Portland, OR'}, {value: 'KEMX', label: 'KEMX - Tucson, AZ'}]
+          each option in options
+            option(value=option.value, selected=(mood==option.value))= option.label 
+    .form-group
+      label(class='col-sm-2 control-label', for='date') Date
+      .col-sm-8
+        input.form-control(type='date', name='date', min='1991-06-05', id='datepicker')
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        button.btn.btn-primary(type='submit')
+          | Submit
