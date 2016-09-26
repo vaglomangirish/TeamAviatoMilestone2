@@ -4,3 +4,10 @@ block content
   .page-header 
     h3 Your past searches
 
+  div
+    table
+      tbody
+        for object in pageData
+          tr
+            for subobject in object
+              td= subobject
