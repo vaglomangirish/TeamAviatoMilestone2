@@ -35,6 +35,6 @@ deploy:
     bundle_type: zip
     application: TeamAviatoApp
     deployment_group: TeamAviatoApp
-    region: us-east-1
+    region: us-west-2
     on:
       branch: api-ingestor
