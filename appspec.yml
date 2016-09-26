@@ -5,10 +5,10 @@ files:
     destination: /home/ec2-user
 hooks:
   BeforeInstall:
-    - location: data_ingestor/scripts/before_install.sh
+    - location: api-ingestor/scripts/before_install.sh
       timeout: 3600
       runas: root
   ApplicationStart:
-    - location: data_ingestor/scripts/install.sh
+    - location: api-ingestor/scripts/install.sh
       timeout: 3600
       runas: root
