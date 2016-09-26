@@ -18,6 +18,10 @@ block content
       .col-sm-8
         input.form-control(type='date', name='date', min='1991-06-05', id='datepicker')
     .form-group
+      label(class='col-sm-2 control-label', for='time') Time (HHMMSS)
+      .col-sm-8
+        input.form-control(type='time', name='time', id='timepicker')
+    .form-group
       .col-sm-offset-2.col-sm-8
         button.btn.btn-primary(type='submit')
           | Submit

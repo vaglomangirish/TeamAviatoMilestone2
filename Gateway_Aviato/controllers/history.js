@@ -6,13 +6,14 @@ exports.getHistory = (req, res) => {
  
   var results = new EventEmitter();
 
+  var myReqObject = {};
+  myReqObject.userName = req.user.email;
+
   request({
   	url: 'http://10.0.0.117:8080/registry/v1/service/user',
   	method: 'POST',
   	headers: { 'Content-Type': 'application/json' },
-  	json: {
-  		userName: 'Prajna'
-  	}
+  	json: myReqObject
   }, function(error, response, body){
   	if(error){
   		console.log('Generic error while connecting to the registry.');
