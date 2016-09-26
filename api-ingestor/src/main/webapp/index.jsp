@@ -1,6 +1,8 @@
 <html>
 <body>
     <h2>Data Ingestor!</h2>
-    <p><a href="rest/diservice/KJFL/2004-2-23/172739">URL Generator</a>
+    <p><a href="v1/service/getData">Get Data</a>
+    <p><a href="v1/service/sendURL">Send URL</a>
+    <p><a href="v1/service/sendLOG">Send LOG</a>
 </body>
 </html>
