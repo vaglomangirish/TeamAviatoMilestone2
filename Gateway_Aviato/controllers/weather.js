@@ -90,9 +90,10 @@ exports.postWeather = (req, res, next) => {
     						//console.log('Runforecast was successful');	
     					}
     					if(requestSuccess == 0){
-                            var outputMessage = body.temperature;
-    						req.flash('success', {msg: 'Storm detection was successful.' + outputMessage});
-    						res.redirect('/weather');
+                //var outputMessage = body.temperature;
+    						req.flash('success', {msg: 'Storm detection was successful.'});
+    						req.session.forecastData = body;
+                res.redirect('/results');
     					}
     					else{
     						req.flash('error', {msg: 'Storm detection was not successful.'});
