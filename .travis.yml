@@ -18,9 +18,9 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
-    bucket: sga_aviatobucket
+    bucket: teamaviato
     local_dir: dpl_cd_upload
-    region: us-west-2
+    region: us-east-1
     skip_cleanup: true
     acl: public_read
     detect_encoding: true
@@ -30,11 +30,11 @@ deploy:
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
-    bucket: sga_aviatobucket
+    bucket: teamaviato
     key: SGA_Aviato_DataIngestor.zip
     bundle_type: zip
-    application: TeamAviato
-    deployment_group: TeamAviato
-    region: us-west-2
+    application: TeamAviatoApp
+    deployment_group: TeamAviatoApp
+    region: us-east-1
     on:
       branch: api-ingestor
