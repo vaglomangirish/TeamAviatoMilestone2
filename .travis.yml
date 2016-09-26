@@ -1,4 +1,5 @@
 language: python
+
 python:
   - "3.3"
   - "3.4"
@@ -6,4 +7,56 @@ python:
 # command to install dependencies
 install: "pip install -r forecasttrigger/requirements.txt"
 
+before_script:
+  - pip install virtualenv
+  - cd forecasttrigger
+  - virtualenv env
+  - source env/bin/activate
+  - pip install requests
+  - pip install httplib2
+  - pip install nose
+  - pip install Flask-SQLAlchemy
+
 script: nosetests
+
+
+
+before_deploy:
+  - cd ..
+  - zip -r SGA_TeamAviato_ForecastTrigger.zip forecasttrigger appspec.yml || true
+  - mkdir -p "dpl_cd_upload"
+  - mv SGA_TeamAviato_ForecastTrigger.zip dpl_cd_upload/SGA_TeamAviato_ForecastTrigger.zip || true
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: teamaviatobucket
+    skip_cleanup: true
+    local-dir: dpl_cd_upload
+    upload-dir: build/libs/forecast_trigger
+    acl: public_read
+    detect_encoding: true
+    on: 
+      branch: api_forecasttrigger
+      
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: teamaviatobucket
+    key: build/libs/forecasttrigger/SGA_TeamAviato_ForecastTrigger.zip
+    bundle_type: zip
+    application: TeamAviato
+    deployment_group: TeamAviato
+    region: us-west-2
+    on:
+      branch: api_forecasttrigger
+      
+
+after_deploy:
+  - echo "Performing after deploy procedures..."
+  - done
+  
+notifications:
+  email:
+    - laxmibh.malkareddy@gmail.com
