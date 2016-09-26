@@ -1,4 +1,5 @@
 language: python
+
 python:
   - "3.3"
   - "3.4"
@@ -6,5 +7,53 @@ python:
 # command to install dependencies
 install: "pip install -r stormdetection/requirements.txt"
 
-# command to run tests
+before_script:
+  - pip install virtualenv
+  - cd stormdetection
+  - virtualenv env
+  - source env/bin/activate
+  - pip install nose
+  - pip install Flask-SQLAlchemy
+
 script: cd "stormdetection" && python test_storm_detector.py
+
+
+before_deploy:
+  - cd ..
+  - zip -r SGA_TeamAviato_StormDetector.zip stormdetection appspec.yml || true
+  - mkdir -p "dpl_cd_upload"
+  - mv SGA_TeamAviato_StormDetector.zip dpl_cd_upload/SGA_TeamAviato_StormDetector.zip || true
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: teamaviatobucket
+    skip_cleanup: true
+    local-dir: dpl_cd_upload
+    upload-dir: build/libs/storm_detector
+    acl: public_read
+    detect_encoding: true
+    on: 
+      branch: api_stormdetector
+      
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: teamaviatobucket
+    key: build/libs/storm_detector/SGA_TeamAviato_StormDetector.zip
+    bundle_type: zip
+    application: TeamAviato
+    deployment_group: TeamAviato
+    region: us-west-2
+    on:
+      branch: api_stormdetector
+      
+
+after_deploy:
+  - echo "Performing after deploy procedures..."
+  - done
+  
+notifications:
+  email:
+    - laxmibh.malkareddy@gmail.com
