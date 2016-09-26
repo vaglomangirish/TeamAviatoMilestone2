@@ -1,0 +1,16 @@
+
+language: java
+branches:
+  only:
+    - api-registry
+notifications:
+  email:
+    - arbhagwa@umail.iu.edu
+    - laxmalka@umail.iu.edu
+    - pcpeters@umail.iu.edu
+    - tilaks@umail.iu.edu
+jdk:
+  - oraclejdk8
+sudo: false
+install: true
+script: cd "api-registry" && mvn clean install -DskipTests=true
