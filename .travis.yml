@@ -15,7 +15,7 @@ before_script:
   - pip install nose
   - pip install Flask-SQLAlchemy
 
-script: python test_storm_detector.py
+script: nosetests
 
 
 before_deploy:
