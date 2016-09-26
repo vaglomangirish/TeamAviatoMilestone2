@@ -19,6 +19,8 @@
           a(href='/contact') Contact
         li(class=(title == 'Weather Forecast') ? 'active' : undefined)
           a(href='/weather') Weather Forecast
+        li(class=(title == 'History') ? 'active' : undefined) 
+          a(href='/history') History 
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)
