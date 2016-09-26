@@ -7,7 +7,7 @@ exports.getWeather = (req, res) => {
   });
 };
 
-exports.postWeather = (req, res) => {
+exports.postWeather = (req, res, next) => {
   req.assert('station', 'Station cannot be blank').notEmpty();
   req.assert('date', 'Date cannot be blank').isDate();
   req.assert('time', 'Please fill in time in the correct format').notEmpty();
@@ -17,21 +17,23 @@ exports.postWeather = (req, res) => {
     req.flash('errors', errors);
     return res.redirect('/weather');
   }
-
+  
   var time = req.body.time.split(':').join('').concat('00');
+  
+  var userRequest = {};
+  userRequest.userName = req.user.email,
+  userRequest.stationName = req.body.station;
+  userRequest.date = req.body.date;
+  userRequest.time = time;
+  userRequest.requestId = uuid.v1();
+  //console.log('The JSON is: ' + JSON.stringify(userRequest));
+
   var requestSuccess = 0;
-  var reqId = uuid.v1();
   request({ // Request to the Data Ingestor
     url: 'http://10.0.0.209:8080/dataingestor/v1/service/url',
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
-    json: {
-        userName: 'Amol Bhagwat',
-        stationName: 'KIND',
-        date: '2016-09-24',
-        time: '111111',
-        requestId: reqId
-    }
+    json: userRequest
   }, function(error, response, body){
     if(error) {
     	//console.log(error);
@@ -45,18 +47,16 @@ exports.postWeather = (req, res) => {
     else if (response.statusCode == 200){
     	console.log('Response from Data Ingestor is: ' + response.statusCode);
     	
-    	//var the_object = response.body;
+    	var diResponse = response.body;
     	//console.log('The name is - ' + the_object.userName);
     	//console.log('The URL is - ' + the_object.url);
+        //console.log('The req ID is - ' + the_object.requestId);
 
     	request({ // Request to the storm detector
     		url: 'http://10.0.0.97:5000/stormdetector/v1/service',
     		method: 'POST',
     		headers: { 'Content-Type': 'application/json' },
-    		json: {
-    			userName: 'Amol Bhagwat',
-        		requestId: reqId
-    		}
+    		json: diResponse
     	}, function(error, response, body){
     		if(error){
     			console.log('Generic error while connecting to the storm detector.');
@@ -64,7 +64,7 @@ exports.postWeather = (req, res) => {
     			requestSuccess = -1;
     		}
     		else if(response.statusCode != 200){
-    			console.log(response.statusCode + ' while connecting to the storm detector. ReqId is: ' + reqId);
+    			//console.log(response.statusCode + ' while connecting to the storm detector. ReqId is: ' + reqId);
     			requestSuccess = 2;
     		}
     		else if(response.statusCode == 200){
@@ -75,10 +75,7 @@ exports.postWeather = (req, res) => {
     					url: 'http://10.0.0.97:8050/runforecast/v1/service',
     					method: 'POST',
     					headers: { 'Content-Type': 'application/json' },
-    					json: {
-    						userName: 'Amol Bhagwat',
-    				   		requestId: reqId
-    					}
+    					json: diResponse
     				}, function(error, response, body){
     					if(error){
     						console.log('Generic error while connecting to the forecaster.');
@@ -86,14 +83,15 @@ exports.postWeather = (req, res) => {
     						requestSuccess = -1;
     					}
     					else if(response.statusCode != 200){
-    						console.log('Error while connecting to the run forecaster. ReqId is: ' + reqId);
+    						//console.log('Error while connecting to the run forecaster. ReqId is: ' + reqId);
     						requestSuccess = 3;
     					}
     					else if(response.statusCode == 200){
     						//console.log('Runforecast was successful');	
     					}
     					if(requestSuccess == 0){
-    						req.flash('success', {msg: 'Storm detection was successful.'});
+                            var outputMessage = body.temperature;
+    						req.flash('success', {msg: 'Storm detection was successful.' + outputMessage});
     						res.redirect('/weather');
     					}
     					else{
