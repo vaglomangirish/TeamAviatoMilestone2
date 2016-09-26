@@ -10,6 +10,7 @@ exports.getWeather = (req, res) => {
 exports.postWeather = (req, res) => {
   req.assert('station', 'Station cannot be blank').notEmpty();
   req.assert('date', 'Date cannot be blank').isDate();
+  req.assert('time', 'Please fill in time in the correct format').notEmpty();
   
   const errors = req.validationErrors();
   if (errors) {
@@ -17,6 +18,7 @@ exports.postWeather = (req, res) => {
     return res.redirect('/weather');
   }
 
+  var time = req.body.time.split(':').join('').concat('00');
   var requestSuccess = 0;
   var reqId = uuid.v1();
   request({ // Request to the Data Ingestor
