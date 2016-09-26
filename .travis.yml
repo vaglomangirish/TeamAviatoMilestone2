@@ -8,7 +8,7 @@ install: "pip install -r stormclustering/requirements.txt"
 
 before_script:
   - pip install virtualenv
-  - cd stormdetection
+  - cd stormclustering
   - virtualenv env
   - source env/bin/activate
   - pip install requests
