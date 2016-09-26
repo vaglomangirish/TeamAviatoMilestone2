@@ -1,11 +1,63 @@
 language: python
+
 python:
-  - "3.2"
   - "3.3"
   - "3.4"
   - "3.5"
 # command to install dependencies
 install: "pip install -r runforecast/requirements.txt"
 
-# command to run service
-script: cd "runforecast" && python test_get_forecast.py
+before_script:
+  - pip install virtualenv
+  - cd stormdetection
+  - virtualenv env
+  - source env/bin/activate
+  - pip install requests
+  - pip install httplib2
+  - pip install nose
+  - pip install Flask-SQLAlchemy
+
+script: nosetests
+
+
+
+before_deploy:
+  - cd ..
+  - zip -r SGA_TeamAviato_RunForeCast.zip runforecast appspec.yml || true
+  - mkdir -p "dpl_cd_upload"
+  - mv SGA_TeamAviato_RunForeCast.zip dpl_cd_upload/SGA_TeamAviato_RunForeCast.zip || true
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: teamaviato
+    skip_cleanup: true
+    local-dir: dpl_cd_upload
+    upload-dir: build/libs/run_forecast
+    acl: public_read
+    region: us-east-1
+    detect_encoding: true
+    on: 
+      branch: api-runforecast
+      
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: teamaviato
+    key: build/libs/run_forecast/SGA_TeamAviato_RunForeCast.zip
+    bundle_type: zip
+    application: TeamAviatoApp
+    deployment_group: TeamAviatoApp
+    region: us-west-2
+    on:
+      branch: api-runforecast
+      
+
+after_deploy:
+  - echo "Performing after deploy procedures..."
+  - done
+  
+notifications:
+  email:
+    - laxmibh.malkareddy@gmail.com
