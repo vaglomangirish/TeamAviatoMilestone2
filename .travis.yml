@@ -6,3 +6,35 @@ services:
 env:
   - CXX=g++-4.8
 
+before_deploy:
+  - cd Gateway_Aviato
+  - npm install
+  - cd ..
+  - zip -r SGA_Aviato_Gateway.zip api-gateway scripts appspec.yml || true
+  - mkdir -p "gateway_upload"
+  - mv SGA_Aviato_Gateway.zip gateway_upload/SGA_Aviato_Gateway.zip || true
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: teamaviato
+    local_dir: gateway_upload
+    region: us-east-1
+    skip_cleanup: true
+    acl: public_read
+    detect_encoding: true
+    on:
+      branch: api-gateway
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: teamaviato
+    key: SGA_Aviato_Gateway.zip
+    bundle_type: zip
+    application: TeamAviatoApp
+    deployment_group: TeamAviatoApp
+    region: us-west-2
+    on:
+      branch: api-ingestor
