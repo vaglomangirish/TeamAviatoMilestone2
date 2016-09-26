@@ -26,29 +26,30 @@ before_deploy:
 
 deploy:
   - provider: s3
-    access_key_id: $AWS_ACCESS_KEY_ID
-    secret_access_key: $AWS_SECRET_ACCESS_KEY
-    bucket: teamaviatobucket
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: teamaviato
     skip_cleanup: true
     local-dir: dpl_cd_upload
     upload-dir: build/libs/storm_detector
     acl: public_read
+    region: us-east-1
     detect_encoding: true
     on: 
       branch: api_stormdetector
       
   - provider: codedeploy
-    access_key_id: $AWS_ACCESS_KEY_ID
-    secret_access_key: $AWS_SECRET_ACCESS_KEY
-    bucket: teamaviatobucket
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: teamaviato
     key: build/libs/storm_detector/SGA_TeamAviato_StormDetector.zip
     bundle_type: zip
-    application: TeamAviato
-    deployment_group: TeamAviato
+    application: TeamAviatoApp
+    deployment_group: TeamAviatoApp
     region: us-west-2
     on:
       branch: api_stormdetector
-      
+    
 
 after_deploy:
   - echo "Performing after deploy procedures..."
