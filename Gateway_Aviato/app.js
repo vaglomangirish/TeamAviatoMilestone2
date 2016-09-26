@@ -33,6 +33,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const weatherController = require('./controllers/weather');
+const historyController = require('./controllers/history');
 
 /**
  * API keys and Passport configuration.
@@ -126,6 +127,7 @@ app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
 app.get('/weather', passportConfig.isAuthenticated, weatherController.getWeather);
 app.post('/weather', passportConfig.isAuthenticated, weatherController.postWeather);
+app.get('/history', passportConfig.isAuthenticated, historyController.getHistory);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
