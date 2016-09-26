@@ -8,4 +8,4 @@ python:
 install: "pip install -r runforecast/requirements.txt"
 
 # command to run service
-script: cd "runforecast" && python runtest_get_forecast.py
+script: cd "runforecast" && python test_get_forecast.py
