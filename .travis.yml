@@ -2,14 +2,39 @@ language: java
 branches:
   only:
     - api-ingestor
-notifications:
-  email:
-    - arbhagwa@umail.iu.edu
-    - laxmalka@umail.iu.edu
-    - pcpeters@umail.iu.edu
-    - tilaks@umail.iu.edu
 jdk:
   - oraclejdk8
 sudo: false
 install: true
 script: cd "api-ingestor" && mvn clean install -DskipTests=true
+
+before_deploy:
+  - cd ..
+  - zip -r SGA_Aviato_DataIngestor.zip api-ingestor scripts appspec.yml || true
+  - mkdir -p "dpl_cd_upload"
+  - mv SGA_Aviato_DataIngestor.zip dpl_cd_upload/SGA_Aviato_DataIngestor.zip || true
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: sga_aviatobucket
+    local_dir: dpl_cd_upload
+    region: us-west-2
+    skip_cleanup: true
+    acl: public_read
+    detect_encoding: true
+    on:
+      branch: api-ingestor
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: sga_aviatobucket
+    key: SGA_Aviato_DataIngestor.zip
+    bundle_type: zip
+    application: TeamAviato
+    deployment_group: TeamAviato
+    region: us-west-2
+    on:
+      branch: api-ingestor
