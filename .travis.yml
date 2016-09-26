@@ -6,4 +6,4 @@ python:
 # command to install dependencies
 install: "pip install -r forecasttrigger/requirements.txt"
 
-scripts: nosetests
+script: nosetests
