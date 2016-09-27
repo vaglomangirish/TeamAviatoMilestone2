@@ -15,3 +15,4 @@ if [ "$?" -ne 0 ]; then
         npm install npm -g
         node -v
 fi
+rm -rf /home/ec2-user/Gateway

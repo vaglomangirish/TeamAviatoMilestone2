@@ -5,6 +5,6 @@ cd '/home/ec2-user/Gateway'
 
 #echo "starting the application run weather forecast"
 
-rm -rf /home/ec2-user/Gateway/Gateway_Aviato/node_modules/*
+
 
 nodemon app.js >> debug.log 2>&1 &
