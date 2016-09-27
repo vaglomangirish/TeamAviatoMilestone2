@@ -2,8 +2,7 @@ language: python
 
 python:
   - "3.3"
-  - "3.4"
-  - "3.5"
+
 # command to install dependencies
 install: "pip install -r forecasttrigger/requirements.txt"
 
@@ -38,7 +37,7 @@ deploy:
     acl: public_read
     detect_encoding: true
     on: 
-      branch: api_forecasttrigger
+      branch: api-forecasttrigger
       
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY_ID
@@ -50,7 +49,7 @@ deploy:
     deployment_group: TeamAviato
     region: us-west-2
     on:
-      branch: api_forecasttrigger
+      branch: api-forecasttrigger
       
 
 after_deploy:
