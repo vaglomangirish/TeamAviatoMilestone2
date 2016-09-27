@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.ClientProperties;
 import org.json.JSONObject;
 import org.sciencegateway.dataingestor.POJO.URLObjects;
 import org.sciencegateway.dataingestor.service.URLConverter;
@@ -35,11 +36,11 @@ public class RESTResource
 		System.out.println("Receiving data from UI...");		
 		System.out.println(urlObjects);
 		System.out.println("Sending URL to Storm Detector...");
+		JSONObject jsonObject = new JSONObject();
 		try 
 		{
 			urlObjects = urlConverter.getURL(urlObjects);
 			System.out.println(urlObjects);
-			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("requestId", urlObjects.getRequestId());
 			jsonObject.put("userName", urlObjects.getUserName());
 			jsonObject.put("url", urlObjects.getUrl());	
@@ -51,10 +52,14 @@ public class RESTResource
 		{
 			exception.printStackTrace();
 			return Response.status(Status.BAD_REQUEST).entity(exception.getMessage()).build();
-		}				
+		}		
+		catch (Exception exception)
+		{
+			return Response.ok(jsonObject.toString(), MediaType.APPLICATION_JSON).build();
+		}
 	}
 	
-	public void generateLOG(URLObjects urlObjects)
+	public void generateLOG(URLObjects urlObjects) throws Exception
 	{
 		System.out.println("Sending LOG to Registry...");
 		JSONObject jsonObject = new JSONObject();
@@ -65,7 +70,8 @@ public class RESTResource
 		System.out.println(jsonObject.toString());
 		ClientConfig clientConfigR = new ClientConfig();
 		Client clientR = ClientBuilder.newClient(clientConfigR);
-		WebTarget targetR = clientR.target("http://10.0.0.117:8080/registry/v1/service/log");
+		clientR.property(ClientProperties.CONNECT_TIMEOUT, 5000);
+		WebTarget targetR = clientR.target("http://149.160.140.90:8080/registry/v1/service/log");
 		System.out.println(targetR.toString());
 		Response responseToR = targetR.request().post(Entity.entity(jsonObject.toString(), "application/json"),Response.class);
 		System.out.println(responseToR.toString());
