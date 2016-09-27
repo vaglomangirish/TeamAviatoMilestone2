@@ -10,4 +10,4 @@ Team Aviato -
 Milestone 1 -
 ==============================
 
-Build Status  : [![Build Status](https://travis-ci.org/airavata-courses/TeamBashAviato.svg?)](https://travis-ci.org/airavata-courses/TeamAviato)
+Build Status  : [![Build Status](https://travis-ci.org/airavata-courses/TeamAviato.svg?)](https://travis-ci.org/airavata-courses/TeamAviato)
