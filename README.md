@@ -1,8 +1,13 @@
 Science Gateway Project (Fall 2016)
 
 Team Aviato -
+==============================
+* Amol Bhagwat (amolrbhagwat) 
+* Laxmi Bhavani Malkareddy (LaxmiBhavaniM)
+* Prajna Cheryl Peters (pcpeters)
+* Sneha Tilak (tilaks26)
 
-1. Sneha Tilak
-2. Laxmi Bhavani Malkareddy
-3. Amol Bhagwat
-4. Prajna Peters
+Milestone 1 -
+==============================
+
+Build Status  : [![Build Status](https://travis-ci.org/airavata-courses/TeamBash.svg?)](https://travis-ci.org/airavata-courses/TeamBash)
