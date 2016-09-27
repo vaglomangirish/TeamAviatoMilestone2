@@ -30,7 +30,7 @@ exports.postWeather = (req, res, next) => {
 
   var requestSuccess = 0;
   request({ // Request to the Data Ingestor
-    url: 'http://149.160.135.4:8080/dataingestor/v1/service/url',
+    url: 'http://127.0.0.1:8181/dataingestor/v1/service/url',
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     json: userRequest
@@ -53,7 +53,7 @@ exports.postWeather = (req, res, next) => {
         //console.log('The req ID is - ' + the_object.requestId);
 
     	request({ // Request to the storm detector
-    		url: 'http://149.160.217.176:5000/stormdetector/v1/service',
+    		url: 'http://127.0.0.1:8000/stormdetector/v1/service',
     		method: 'POST',
     		headers: { 'Content-Type': 'application/json' },
     		json: diResponse
@@ -72,7 +72,7 @@ exports.postWeather = (req, res, next) => {
 
     			if(body.trigger_response == 'Yes'){
     				request({
-    					url: 'http://149.160.217.176:8050/runforecast/v1/service',
+    					url: 'http://127.0.0.1:8050/runforecast/v1/service',
     					method: 'POST',
     					headers: { 'Content-Type': 'application/json' },
     					json: diResponse
