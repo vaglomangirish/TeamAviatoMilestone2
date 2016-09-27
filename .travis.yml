@@ -28,12 +28,12 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
-    bucket: teamaviato
+    bucket: teamaviatobucket2
     skip_cleanup: true
     local-dir: dpl_cd_upload
     upload-dir: build/libs/storm_detector
     acl: public_read
-    region: us-east-1
+    region: us-west-2
     detect_encoding: true
     on: 
       branch: api_stormdetector
