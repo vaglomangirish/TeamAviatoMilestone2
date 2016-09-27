@@ -20,7 +20,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: teamaviatobucket2
     local_dir: gateway_upload
-    region: us-east-1
+    region: us-west-2
     skip_cleanup: true
     acl: public_read
     detect_encoding: true
@@ -35,6 +35,6 @@ deploy:
     bundle_type: zip
     application: TeamAviatoApp
     deployment_group: TeamAviatoApp
-    region: us-west-2b
+    region: us-west-2
     on:
       branch: api-ingestor
