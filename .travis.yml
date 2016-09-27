@@ -20,9 +20,9 @@ script: nosetests
 
 before_deploy:
   - cd ..
-  - zip -r SGA_TeamAviato_StormDetector.zip stormdetection appspec.yml || true
-  - mkdir -p "dpl_cd_upload"
-  - mv SGA_TeamAviato_StormDetector.zip dpl_cd_upload/SGA_TeamAviato_StormDetector.zip || true
+  - zip -r SGA_TeamAviato_StormDetector.zip stormdetection scripts appspec.yml || true
+  - mkdir -p "stormDetection"
+  - mv SGA_TeamAviato_StormDetector.zip stormDetection/SGA_TeamAviato_StormDetector.zip || true
 
 deploy:
   - provider: s3
@@ -30,8 +30,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: teamaviatobucket2
     skip_cleanup: true
-    local-dir: dpl_cd_upload
-    upload-dir: build/libs/storm_detector
+    local-dir: stormDetection
     acl: public_read
     region: us-west-2
     detect_encoding: true
