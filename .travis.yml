@@ -6,11 +6,15 @@ services:
 env:
   - CXX=g++-4.8
 
-before_deploy:
+before_install:
   - cd Gateway_Aviato
+  
+install:
   - npm install
+
+before_deploy:
   - cd ..
-  - zip -r SGA_Aviato_Gateway.zip api-gateway scripts appspec.yml || true
+  - zip -r SGA_Aviato_Gateway.zip Gateway_Aviato scripts appspec.yml || true
   - mkdir -p "gateway_upload"
   - mv SGA_Aviato_Gateway.zip gateway_upload/SGA_Aviato_Gateway.zip || true
 
