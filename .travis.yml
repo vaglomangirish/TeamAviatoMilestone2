@@ -37,4 +37,4 @@ deploy:
     deployment_group: TeamAviatoApp
     region: us-west-2
     on:
-      branch: api-ingestor
+      branch: api-gateway
