@@ -18,9 +18,9 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
-    bucket: teamaviato
+    bucket: teamaviatobucket2
     local_dir: gateway_upload
-    region: us-east-1
+    region: us-west-2
     skip_cleanup: true
     acl: public_read
     detect_encoding: true
@@ -30,11 +30,11 @@ deploy:
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
-    bucket: teamaviato
+    bucket: teamaviatobucket2
     key: SGA_Aviato_Gateway.zip
     bundle_type: zip
     application: TeamAviatoApp
     deployment_group: TeamAviatoApp
     region: us-west-2
     on:
-      branch: api-ingestor
+      branch: api-gateway
