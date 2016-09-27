@@ -18,7 +18,7 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
-    bucket: teamaviato
+    bucket: teamaviatobucket2
     local_dir: gateway_upload
     region: us-east-1
     skip_cleanup: true
