@@ -21,9 +21,9 @@ script: nosetests
 
 before_deploy:
   - cd ..
-  - zip -r SGA_TeamAviato_StormClustering.zip stormclustering appspec.yml || true
-  - mkdir -p "dpl_cd_upload"
-  - mv SGA_TeamAviato_StormClustering.zip dpl_cd_upload/SGA_TeamAviato_StormClustering.zip || true
+  - zip -r SGA_TeamAviato_StormClustering.zip stormclustering scripts appspec.yml || true
+  - mkdir -p "stormClustering"
+  - mv SGA_TeamAviato_StormClustering.zip stormClustering/SGA_TeamAviato_StormClustering.zip || true
 
 deploy:
   - provider: s3
@@ -31,8 +31,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: teamaviatobucket2
     skip_cleanup: true
-    local-dir: dpl_cd_upload
-    upload-dir: build/libs/storm_clustering
+    local-dir: stormClustering
     acl: public_read
     region: us-west-2
     detect_encoding: true
@@ -43,7 +42,7 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
     bucket: teamaviatobucket2
-    key: build/libs/storm_clustering/SGA_TeamAviato_StormClustering.zip
+    key: SGA_TeamAviato_StormClustering.zip
     bundle_type: zip
     application: TeamAviatoApp
     deployment_group: TeamAviatoApp
