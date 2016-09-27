@@ -13,4 +13,4 @@ jdk:
   - oraclejdk8
 sudo: false
 install: true
-script: cd "api-registry" && mvn clean install -DskipTests=true
+script: cd "registry" && mvn clean install -DskipTests=true
