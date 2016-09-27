@@ -6,4 +6,4 @@ npm install
 
 #echo "starting the application run weather forecast"
 
-PORT=3000 npm start >> debug.log 2>&1 &
+nodemon app.js >> debug.log 2>&1 &
