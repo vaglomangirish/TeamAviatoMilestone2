@@ -54,4 +54,4 @@ def getkmlfile(yy,mm,dd,station,filename):
     return 'KML_output.kml'
 
 if __name__ == '__main__':
-    app.run('0.0.0.0')
+    app.run(port=8000)
