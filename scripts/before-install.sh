@@ -16,27 +16,34 @@ fi
 #Check if MySQL is already installed
 rpm -qa | grep mysql
 
-#Install MySQL
-sudo yum install mysql mysql-server
+if [ "$?" -ne 0 ]; then
+     echo 'Installing Maven...'
+	#Install MySQL
+	sudo yum install -y mysql mysql-server
 
-#Change directory to that of MySQL
-cd /etc/rc.d/init.d/
-sudo service mysqld status
-sudo service mysqld start
+	#Change directory to that of MySQL
+	cd /etc/rc.d/init.d/
+	sudo service mysqld status
+	sudo service mysqld start
+	
+	#Check if MySQL is already installed
+	rpm -qa | grep mysql
+fi
+
 mysql -u root -p
-echo "root"
+echo 'root'
 
 #Drop existing database
-echo "DROP DATABASE IF EXISTS registry;"
+echo 'DROP DATABASE IF EXISTS registry;'
 
 #Create database
-echo "CREATE DATABASE IF NOT EXISTS registry;"
+echo 'CREATE DATABASE IF NOT EXISTS registry;'
 
 #Use database
-echo "use registry;"
+echo 'use registry;'
 
 #Create table
-echo "CREATE TABLE logservice
+echo 'CREATE TABLE logservice
 (
 timestamp VARCHAR(45) NOT NULL,
 requestid TINYTEXT NOT NULL,
@@ -44,8 +51,8 @@ username VARCHAR(45) NOT NULL,
 servicename VARCHAR(45) NOT NULL,
 description MEDIUMTEXT NOT NULL,
 PRIMARY KEY (timestamp)
-);"
+);'
 
 #Exit from database
-echo "exit;"
+echo 'exit;'
 
