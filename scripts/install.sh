@@ -14,4 +14,10 @@ rm -rf '/home/ec2-user/Gateway'
 
 
 cd '/home/ec2-user/gateway-microservice/Gateway_Aviato'
+
+echo "Fixing node-sass"
+
+npm uninstall --save node-sass
+npm install --save node-sass
+
 nodemon app.js >> debug.log 2>&1 &
