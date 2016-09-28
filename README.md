@@ -1,4 +1,5 @@
 Science Gateway Project (Fall 2016)
+==============================
 
 Team Aviato -
 ==============================
