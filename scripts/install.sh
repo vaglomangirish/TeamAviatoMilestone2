@@ -2,6 +2,9 @@
 mkdir '/home/ec2-user/gateway-microservice'
 cp -r '/home/ec2-user/Gateway/*' '/home/ec2-user/gateway-microservice'
 
+# delete the revision directory
+rm -rf '/home/ec2-user/Gateway'
+
 #cd '/home/ec2-user/Gateway'
 
 #echo "Installing the dependencies from package.json"
