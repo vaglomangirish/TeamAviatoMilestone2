@@ -1,6 +1,6 @@
 # copy files from Gateway to a new folder
 mkdir '/home/ec2-user/gateway-microservice'
-cp -r '/home/ec2-user/Gateway/*' '/home/ec2-user/gateway-microservice'
+cp -r /home/ec2-user/Gateway/* /home/ec2-user/gateway-microservice
 
 # delete the revision directory
 rm -rf '/home/ec2-user/Gateway'
