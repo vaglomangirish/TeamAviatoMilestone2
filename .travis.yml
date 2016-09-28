@@ -38,6 +38,7 @@ deploy:
     application: TeamAviatoApp
     deployment_group: TeamAviatoApp
     region: us-west-2
+    skip_cleanup: true
     on:
       branch: api-registry
-    skip_cleanup: true
+    
