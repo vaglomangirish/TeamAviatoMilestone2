@@ -20,4 +20,6 @@ echo "Fixing node-sass"
 npm uninstall --save node-sass
 npm install --save node-sass
 
+chmod -R 777 public
+
 nodemon app.js >> debug.log 2>&1 &
