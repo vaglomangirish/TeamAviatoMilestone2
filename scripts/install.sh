@@ -1,5 +1,11 @@
 echo 'starting installation process' >> /var/log/sga-teamaviato-StormClustering-install.log
-cd '/home/ec2-user/forecasttrigger'
+#cd '/home/ec2-user/forecasttrigger'
+
+rm -r /home/ec2-user/forecastTrigger
+mv /home/ec2-user/ForecastTrigger  /home/ec2-user/forecastTrigger
+cd /home/ec2-user/forecastTrigger/
+chmod 777 forecasttrigger
+cd forecasttrigger
 
 echo 'Activating virtualenv for Forecast Trigger Microservice' >> /var/log/sga-teamaviato-ForecastTrigger-install.log
 pip install virtualenv >> /var/log/sga-teamaviato-ForecastTrigger-install.log
@@ -12,4 +18,4 @@ pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-ForecastTrigger-install.
 pip install requests >> /var/log/sga-teamaviato-ForecastTrigger-install.log
 echo 'Running Flask Server' >> /var/log/sga-teamaviato-ForecastTrigger-install.log
 export FLASK_APP=forecast_trigger.py
-flask run --host=0.0.0.0 --port=63000 >> /var/log/sga-teamaviato-ForecastTrigger-server.log 2>&1 &
+flask run --host=127.0.0.1 --port=32000 >> /var/log/sga-teamaviato-ForecastTrigger-server.log 2>&1 &
