@@ -12,4 +12,3 @@ if [ "$?" -ne 0 ]; then
 	sudo yum install -y apache-maven
 	mvn --version
 fi
-rm -rf /home/ec2-user/api-ingestor/api-ingestor/*
