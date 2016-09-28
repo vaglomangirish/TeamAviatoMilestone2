@@ -2,7 +2,9 @@ echo 'killing existing tomcat process if any'
 cd /usr/local/tomcat7/apache-tomcat-7.0.72
 sudo sh ./bin/shutdown.sh
 sleep 20
+
 export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64
+
 echo 'check if maven is installed'
 mvn --version
 if [ "$?" -ne 0 ]; then
