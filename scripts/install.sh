@@ -1,5 +1,11 @@
 echo 'starting installation process' >> /var/log/sga-teamaviato-RunForecast-install.log
-cd '/home/ec2-user/runforecast'
+#cd '/home/ec2-user/runforecast'
+
+rm -r /home/ec2-user/runForecast
+mv /home/ec2-user/RunForecast  /home/ec2-user/runForecast
+cd /home/ec2-user/runForecast/
+chmod 777 runforecast
+cd runforecast
 
 echo 'Activating virtualenv for RunForecast Microservice' >> /var/log/sga-teamaviato-RunForecast-install.log
 pip install virtualenv >> /var/log/sga-teamaviato-RunForecast-install.log
@@ -10,4 +16,4 @@ pip install nose >> /var/log/sga-teamaviato-RunForecast-install.log
 pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-RunForecast-install.log
 echo 'Running Flask Server' >> /var/log/sga-teamaviato-RunForecast-install.log
 export FLASK_APP=runforecast.py
-flask run --host=0.0.0.0 --port=62000 >> /var/log/sga-teamaviato-RunForecast-server.log 2>&1 &
+flask run --host=127.0.0.1 --port=8050 >> /var/log/sga-teamaviato-RunForecast-server.log 2>&1 &
