@@ -1,8 +1,8 @@
 echo 'starting installation process' >> /var/log/sga-teamaviato-StormClustering-install.log
 #cd '/home/ec2-user/stormclustering'
 
-rm -r /home/ec2-user/stormClustering
 mv /home/ec2-user/StormClustering  /home/ec2-user/stormClustering
+rm -r /home/ec2-user/StormClustering
 cd /home/ec2-user/stormClustering/
 chmod 777 stormclustering
 cd stormclustering
@@ -15,6 +15,5 @@ pip install Flask >> /var/log/sga-teamaviato-StormClustering-install.log
 pip install nose >> /var/log/sga-teamaviato-StormClustering-install.log
 pip install BeautifulSoup4 >> /var/log/sga-teamaviato-StormClustering-install.log
 pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-StormClustering-install.log
-echo 'Running Flask Server' >> /var/log/sga-teamaviato-StormClustering-install.log
-export FLASK_APP=stormclustering.py
-flask run --host=127.0.0.1 --port=31000 >> /var/log/sga-teamaviato-StormClustering-server.log 2>&1 &
+
+python stormclustering.py
