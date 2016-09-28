@@ -13,3 +13,39 @@ if [ "$?" -ne 0 ]; then
 	mvn --version
 fi
 
+#Check if MySQL is already installed
+rpm -qa | grep mysql
+
+#Install MySQL
+sudo yum install mysql mysql-server
+
+#Change directory to that of MySQL
+cd /etc/rc.d/init.d/
+sudo service mysqld status
+sudo service mysqld start
+mysql -u root -p
+echo "root"
+
+#Drop existing database
+echo "DROP DATABASE IF EXISTS registry;"
+
+#Create database
+echo "CREATE DATABASE IF NOT EXISTS registry;"
+
+#Use database
+echo "use registry;"
+
+#Create table
+echo "CREATE TABLE logservice
+(
+timestamp VARCHAR(45) NOT NULL,
+requestid TINYTEXT NOT NULL,
+username VARCHAR(45) NOT NULL,
+servicename VARCHAR(45) NOT NULL,
+description MEDIUMTEXT NOT NULL,
+PRIMARY KEY (timestamp)
+);"
+
+#Exit from database
+echo "exit;"
+
