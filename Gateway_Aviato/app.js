@@ -107,9 +107,7 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
-//app.use('/img',express.static(path.join(__dirname, 'public/images')));
-app.use('/fonts',express.static(path.join(__dirname, 'public/fonts')));
-app.use('/css',express.static(path.join(__dirname, 'public/css')));
+
 
 /**
  * Primary app routes.
