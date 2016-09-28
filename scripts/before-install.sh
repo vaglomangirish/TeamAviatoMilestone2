@@ -17,17 +17,16 @@ fi
 rpm -qa | grep mysql
 
 if [ "$?" -ne 0 ]; then
-     echo 'Installing Maven...'
-	#Install MySQL
-	sudo yum install -y mysql mysql-server
+     echo 'Installing MySQL...'
+     sudo yum install -y mysql mysql-server
 
-	#Change directory to that of MySQL
-	cd /etc/rc.d/init.d/
-	sudo service mysqld status
-	sudo service mysqld start
+     echo 'Change directory to that of MySQL'
+     cd /etc/rc.d/init.d/
+     sudo service mysqld status
+     sudo service mysqld start
 	
-	#Check if MySQL is already installed
-	rpm -qa | grep mysql
+     #Check if MySQL is already installed
+     rpm -qa | grep mysql
 fi
 
 mysql -u root -p
