@@ -1,5 +1,13 @@
+# copy artifacts to new dir
+mkdir '/home/ec2-user/ingestor-microservice'
+cp -r '/home/ec2-user/api-ingestor/*' '/home/ec2-user/ingestor-microservice'
+
+# delete revision
+rm -rf '/home/ec2-user/api-ingestor'
+
 echo 'Installing the Data Ingestor API...'
-cd '/home/ec2-user/api-ingestor/api-ingestor'
+cd '/home/ec2-user/ingestor-microservice/api-ingestor'
+
 mvn clean install >> /var/log/tomcat.log
 mv target/*.war /usr/local/tomcat7/apache-tomcat-7.0.72/webapps/
 sudo mvn clean install >> /var/log/registry.log
