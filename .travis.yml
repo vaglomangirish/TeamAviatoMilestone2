@@ -42,4 +42,4 @@ deploy:
     region: us-west-2
     on:
       branch: api-gateway
-    clean_up: true
+    skip_cleanup: true
