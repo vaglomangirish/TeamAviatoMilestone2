@@ -1,9 +1,12 @@
+ls -l '/home/ec2-user'
+ls -l '/home/ec2-user/api-ingestor'
+
 # copy artifacts to new dir
 mkdir '/home/ec2-user/ingestor-microservice'
 cp -r '/home/ec2-user/api-ingestor/*' '/home/ec2-user/ingestor-microservice'
 
 # delete revision
-rm -rf '/home/ec2-user/api-ingestor'
+# rm -rf '/home/ec2-user/api-ingestor'
 
 echo 'Installing the Data Ingestor API...'
 cd '/home/ec2-user/ingestor-microservice/api-ingestor'
