@@ -1,5 +1,5 @@
 echo 'Installing the Registry API...' 
-cd '/home/ec2-user/registryAPI/'
+cd '/home/ec2-user/registry/registry/'
 mvn clean install >> /var/log/tomcat.log
 mv target/*.war /usr/local/tomcat7/apache-tomcat-7.0.72/webapps/
 sudo mvn clean install >> /var/log/registry.log
