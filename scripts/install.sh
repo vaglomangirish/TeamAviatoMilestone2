@@ -1,5 +1,5 @@
 echo 'starting installation process' >> /var/log/sga-teamaviato-StormDetector-install.log
-cd '/home/ec2-user/stormdetection'
+#cd '/home/ec2-user/stormdetection'
 
 rm -r /home/ec2-user/stormDetector
 mv /home/ec2-user/StormDetector  /home/ec2-user/stormDetector
