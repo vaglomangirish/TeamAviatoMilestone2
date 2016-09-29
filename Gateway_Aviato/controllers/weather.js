@@ -30,7 +30,7 @@ exports.postWeather = (req, res, next) => {
 
   var requestSuccess = 0;
   request({ // Request to the Data Ingestor
-    url: 'http://127.0.0.1:8181/dataingestor/v1/service/url',
+    url: 'http://127.0.0.1:8080/dataingestor/webapi/service/url',
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     json: userRequest
