@@ -31,7 +31,7 @@ def sendkml():
 	    r1 = requests.post(url1, data=json.dumps(log1,ensure_ascii=False), headers=headers1)
 	    print("registry response",r1.content)
 	except:
-		print("Couldn't connect to registry")
+		print("Couldn't connect to registry service")
     #---------------------------------------------------------
 
     #*********************************************************
