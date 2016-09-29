@@ -16,5 +16,4 @@ pip install nose >> /var/log/sga-teamaviato-StormDetector-install.log
 pip install BeautifulSoup4 >> /var/log/sga-teamaviato-StormDetector-install.log
 pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-StormDetector-install.log
 
-export FLASK_APP=stormdetector.py
-flask run --host=127.0.0.1 --port=8000 >> /var/log/sga-teamaviato-RunForecast-server.log 2>&1 &
+python stormdetector.py
