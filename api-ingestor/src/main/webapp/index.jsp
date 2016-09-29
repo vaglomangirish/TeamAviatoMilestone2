@@ -1,8 +1,8 @@
 <html>
 <body>
-    <h2>Data Ingestor!</h2>
-    <p><a href="v1/service/getData">Get Data</a>
-    <p><a href="v1/service/sendURL">Send URL</a>
-    <p><a href="v1/service/sendLOG">Send LOG</a>
+    <h2>Jersey RESTful Web Application!</h2>
+    <p><a href="webapi/service">Jersey resource</a>
+    <p>Visit <a href="http://jersey.java.net">Project Jersey website</a>
+    for more information on Jersey!
 </body>
 </html>
