@@ -10,7 +10,7 @@ exports.getHistory = (req, res) => {
   myReqObject.userName = req.user.email;
 
   request({
-  	url: 'http://10.0.0.117:8080/registry/v1/service/user',
+  	url: 'http://127.0.0.1:8080/registry/v1/service/user',
   	method: 'POST',
   	headers: { 'Content-Type': 'application/json' },
   	json: myReqObject
