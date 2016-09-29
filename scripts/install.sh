@@ -10,7 +10,7 @@ cd '/home/ec2-user/ingestor-microservice/api-ingestor'
 
 mvn clean install >> /var/log/tomcat.log
 mkdir /usr/local/tomcat7/apache-tomcat-7.0.72/webapps/dataingestor
-cp server.xml /usr/local/tomcat7/apache-tomcat-7.0.72/conf/server.xml
+sudo cp server.xml /usr/local/tomcat7/apache-tomcat-7.0.72/conf/server.xml
 cp target/*.war /usr/local/tomcat7/apache-tomcat-7.0.72/webapps/dataingestor >> /var/log/tomcat.log
 cd  /usr/local/tomcat7/apache-tomcat-7.0.72
 
