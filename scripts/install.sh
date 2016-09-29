@@ -15,5 +15,6 @@ pip install Flask >> /var/log/sga-teamaviato-StormDetector-install.log
 pip install nose >> /var/log/sga-teamaviato-StormDetector-install.log
 pip install BeautifulSoup4 >> /var/log/sga-teamaviato-StormDetector-install.log
 pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-StormDetector-install.log
+pip install ConfigParser
 
 python stormdetector.py
