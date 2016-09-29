@@ -21,6 +21,8 @@ import org.json.JSONObject;
 import org.sciencegateway.dataingestor.POJO.URLObjects;
 import org.sciencegateway.dataingestor.service.URLConverter;
 
+//Rest
+
 @Path("/service")
 public class RESTResource 
 {
