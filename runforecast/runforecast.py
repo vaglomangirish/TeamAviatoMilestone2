@@ -18,18 +18,21 @@ def generatecluster():
 
     # ---------------------------------------------------------
     # connect to registry
-    config = ConfigParser()
-    config.read('config.ini')
-    host1 = config.get('registryConfig', 'ipaddress1')
-    port1 = config.get('registryConfig', 'port1')
+    try:
+        config = ConfigParser()
+        config.read('config.ini')
+        host1 = config.get('registryConfig', 'ipaddress1')
+        port1 = config.get('registryConfig', 'port1')
 
-    url1 = "http://" + host1 + ":" + port1 + "/registry/v1/service/log"
-    print(url1)
-    log1 = {'userName': userName, 'requestId': requestId, 'serviceName': 'Run Forecast', 'description': 'success'}
-    headers1 = {'Content-type': 'application/json'}
+        url1 = "http://" + host1 + ":" + port1 + "/registry/v1/service/log"
+        print(url1)
+        log1 = {'userName': userName, 'requestId': requestId, 'serviceName': 'Run Forecast', 'description': 'success'}
+        headers1 = {'Content-type': 'application/json'}
 
-    r1 = requests.post(url1, data=json.dumps(log1, ensure_ascii=False), headers=headers1)
-    print("registry response", r1.content)
+        r1 = requests.post(url1, data=json.dumps(log1, ensure_ascii=False), headers=headers1)
+        print("registry response", r1.content)
+    except:
+        print("Couldn't connect to registry service.")
     # ---------------------------------------------------------
 
     return Response(json.dumps(forecast), mimetype='application/json')
