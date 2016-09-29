@@ -15,6 +15,7 @@ pip install Flask >> /var/log/sga-teamaviato-StormClustering-install.log
 pip install nose >> /var/log/sga-teamaviato-StormClustering-install.log
 pip install BeautifulSoup4 >> /var/log/sga-teamaviato-StormClustering-install.log
 pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-StormClustering-install.log
+pip install ConfigParser
+pip install requests
 
-export FLASK_APP=stormclustering.py
-flask run --host=127.0.0.1 --port=31000 >> /var/log/sga-teamaviato-StormClustering-server.log 2>&1 &
+nohup python stormclustering.py > /dev/null 2>&1 &
