@@ -19,4 +19,4 @@ pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-StormDetector-install.lo
 pip install ConfigParser
 pip install requests
 
-nohup python stormdetector.py > /dev/null 2>&1 &
+nohup python stormdetector.py >> stormdetector.log 2>&1 &
