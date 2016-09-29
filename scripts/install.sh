@@ -15,7 +15,8 @@ pip install Flask >> /var/log/sga-teamaviato-ForecastTrigger-install.log
 pip install nose >> /var/log/sga-teamaviato-ForecastTrigger-install.log
 pip install BeautifulSoup4 >> /var/log/sga-teamaviato-ForecastTrigger-install.log
 pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-ForecastTrigger-install.log
-pip install requests >> /var/log/sga-teamaviato-ForecastTrigger-install.log
-echo 'Running Flask Server' >> /var/log/sga-teamaviato-ForecastTrigger-install.log
-export FLASK_APP=forecast_trigger.py
-flask run --host=127.0.0.1 --port=32000 >> /var/log/sga-teamaviato-ForecastTrigger-server.log 2>&1 &
+pip install ConfigParser
+pip install requests
+
+echo 'Running Flask Server for forecast_trigger' >> /var/log/sga-teamaviato-ForecastTrigger-install.log
+nohup python forecast_trigger.py > /dev/null 2>&1 &
