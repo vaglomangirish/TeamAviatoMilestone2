@@ -40,4 +40,4 @@ def trigger_forecast():
     return json.dumps({'trigger_response':trigger_response})
 
 if __name__ == '__main__':
-    app.run(port=32000)
+    app.run(host='0.0.0.0',port=32000)
