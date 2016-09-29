@@ -6,9 +6,9 @@ sudo ./bin/version.sh
 if [ "$?" -ne 0 ]; then
    echo 'Installing Tomcat...'
    	sudo wget http://www.us.apache.org/dist/tomcat/tomcat-7/v7.0.72/bin/apache-tomcat-7.0.72.tar.gz
-	tar xzf apache-tomcat-7.0.68.tar.gz
+	tar xzf apache-tomcat-7.0.72.tar.gz
 	sudo mkdir /usr/local/tomcat7
-	sudo mv apache-tomcat-7.0.68 /usr/local/tomcat7
+	sudo mv apache-tomcat-7.0.72 /usr/local/tomcat7
 	cd /usr/local/tomcat7/apache-tomcat-7.0.72
 	sudo ./bin/startup.sh
 	sudo ./bin/version.sh
