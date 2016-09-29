@@ -34,7 +34,7 @@ def generatecluster():
         print("registry response", r1.content)
 
     except:
-        print("Couldn't connect to registry service")
+        print("Couldn't connect to registry service.")
     # ---------------------------------------------------------
 
     # *********************************************************
