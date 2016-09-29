@@ -19,11 +19,6 @@ else
 	sleep 20
 fi
 
-echo 'killing existing tomcat process if any'
-cd /usr/local/tomcat7/apache-tomcat-7.0.72
-sudo sh ./bin/shutdown.sh
-sleep 20
-
 echo 'check if maven is installed'
 mvn --version
 if [ "$?" -ne 0 ]; then
