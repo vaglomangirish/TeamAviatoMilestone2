@@ -22,7 +22,7 @@ def sendkml():
         config.read('config.ini')
         host1 = config.get('registryConfig', 'ipaddress1')
         port1 = config.get('registryConfig', 'port1')
-    
+
         url1="http://"+host1+":"+port1+"/registry/v1/service/log"
         print(url1)
         log1={'userName':userName,'requestId':requestId,'serviceName':'Storm Detector','description':'success'}
@@ -57,4 +57,4 @@ def getkmlfile(yy,mm,dd,station,filename):
     return 'KML_output.kml'
 
 if __name__ == '__main__':
-    app.run(port=8000)
+    app.run(host='0.0.0.0',port=8000)
