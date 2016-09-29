@@ -15,5 +15,7 @@ pip install Flask >> /var/log/sga-teamaviato-RunForecast-install.log
 pip install nose >> /var/log/sga-teamaviato-RunForecast-install.log
 pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-RunForecast-install.log
 echo 'Running Flask Server' >> /var/log/sga-teamaviato-RunForecast-install.log
-export FLASK_APP=runforecast.py
-flask run --host=127.0.0.1 --port=8050 >> /var/log/sga-teamaviato-RunForecast-server.log 2>&1 &
+pip install ConfigParser
+pip install requests
+
+nohup python runforecast.py > /dev/null 2>&1 &
