@@ -1,5 +1,5 @@
 package org.aviato.registry.POJO;
-
+ 
 public class RegistryPOJO {
 	
 	private String requestId;
