@@ -58,3 +58,4 @@ after_deploy:
 notifications:
   email:
     - laxmibh.malkareddy@gmail.com
+    
