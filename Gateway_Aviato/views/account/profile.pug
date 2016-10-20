@@ -75,4 +75,13 @@ block content
           i.fa.fa-trash
           | Delete my account
 
-  
+  .page-header 
+    h3 Linked Accounts 
+  .form-horizontal 
+    .form-group 
+      .col-sm-offset-3.col-sm-4 
+        if user.google 
+          p: a.text-danger(href='/account/unlink/google') Unlink your Google account 
+        else 
+          p: a(href='/auth/google') Link your Google account 
+      
