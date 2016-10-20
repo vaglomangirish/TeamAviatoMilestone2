@@ -8,6 +8,10 @@ import requests
 
 app = Flask(__name__)
 
+@app.route('/')
+def test():
+    return "Test service"
+
 @app.route('/stormclustering/v1/service/kml', methods=['POST'])
 def generatecluster():
     request_data = request.get_json()
