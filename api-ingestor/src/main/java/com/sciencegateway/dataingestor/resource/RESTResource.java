@@ -69,7 +69,7 @@ public class RESTResource
 		}
 	}
 	
-	public void generateLOG(URLObjects urlObjects) throws Exception
+	public int generateLOG(URLObjects urlObjects) throws Exception
 	{
 		System.out.println("Sending LOG to Registry...");
 		JSONObject jsonObject = new JSONObject();
@@ -85,7 +85,8 @@ public class RESTResource
 		System.out.println(targetR.toString());
 		Response responseToR = targetR.request().post(Entity.entity(jsonObject.toString(), "application/json"),Response.class);
 		System.out.println(responseToR.toString());
-		responseToR.close();
+		//responseToR.close();
+		return responseToR.getStatus();
 	}
 	
 }
