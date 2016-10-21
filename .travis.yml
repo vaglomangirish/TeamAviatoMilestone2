@@ -5,6 +5,12 @@ branches:
 jdk:
   - oraclejdk8
 sudo: false
+
+before_install:
+  - docker build -t dataingestor .
+  - docker run -d -p 8080:8080 --name api-di dataingestor >> /var/log/DataIngestor.log 2>&1 &
+  - docker ps -a
+
 install: true
 script: cd "api-ingestor" && mvn clean install -DskipTests=true
 
