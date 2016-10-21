@@ -6,6 +6,7 @@ class TestPerformclustering(TestCase):
         from stormclustering import performclustering
         self.assertTrue(type(performclustering('<xmldata>')) == dict)
 
+    #component test case
     def test_stormclustering_endpoint(self):
         tester = app.test_client(self)
         response = tester.get('/')
