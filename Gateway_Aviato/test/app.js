@@ -25,6 +25,21 @@ describe('GET /signup', () => {
   });
 });
 
+describe('GET /weather', () => {
+  it('should return 200 OK', (done) => {
+    request(app)
+      .get('/login')
+      .expect(200, done);
+  });
+});
+
+describe('GET /history', () => {
+  it('should return 200 OK', (done) => {
+    request(app)
+      .get('/login')
+      .expect(200, done);
+  });
+});
 
 describe('GET /random-url', () => {
   it('should return 404', (done) => {
