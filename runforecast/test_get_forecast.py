@@ -9,7 +9,7 @@ class FlaskTestCase(unittest.TestCase):
         response = tester.post('/runforecast/v1/service',data=json.dumps(dict(requestId = "10230",userName="fdhsjgdkf")),
                        content_type='application/json')
         self.assertEqual(response.status_code,200)
-
+#component testcase
 class TestGet_forecast(unittest.TestCase):
     def test_get_forecast(self):
         from runforecast import get_forecast
