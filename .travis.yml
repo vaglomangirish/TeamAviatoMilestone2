@@ -7,15 +7,11 @@ jdk:
 
 sudo: required
 
+before_install:
+  - cd "api-ingestor" && mvn clean install -DskipTests=true
+  
 services:
   - docker
-
-install:
-  - docker build -t dataingestor .
-  - docker run -d -p 8080:8080 --name api-di dataingestor >> /var/log/DataIngestor.log 2>&1 &
-  - docker ps -a
-  
-script: cd "api-ingestor" && mvn clean install -DskipTests=true
 
 before_deploy:
   - cd ..
