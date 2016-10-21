@@ -21,7 +21,7 @@ class Test_ForecastTrigger(unittest.TestCase):
                                    })),
                                content_type='application/json')
         self.assertEqual(response.status_code,200)
-
+    #component testcase
     def test_forecasttrigger_endpoint(self):
         tester = app.test_client(self)
         response = tester.get('/')
