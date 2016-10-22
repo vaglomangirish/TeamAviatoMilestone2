@@ -7,3 +7,4 @@ WORKDIR /usr/local/tomcat/webapps/
 
 #Exposing port
 EXPOSE 8888
+EXPOSE 8080
