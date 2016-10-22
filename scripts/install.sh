@@ -1,22 +1,4 @@
-echo 'starting installation process' >> /var/log/sga-teamaviato-StormDetector-install.log
-#cd '/home/ec2-user/stormdetection'
-
-rm -r /home/ec2-user/stormDetector
-mv /home/ec2-user/StormDetector  /home/ec2-user/stormDetector
-cd /home/ec2-user/stormDetector/
-chmod 777 stormdetection
-cd stormdetection
-
-echo 'Activating virtualenv for StormDetector Microservice' >> /var/log/sga-teamaviato-StormDetector-install.log
-pip install --upgrade pip
-pip install virtualenv >> /var/log/sga-teamaviato-StormDetector-install.log
-virtualenv env >> /var/log/sga-teamaviato-StormDetector-install.log
-source env/bin/activate >> /var/log/sga-teamaviato-StormDetector-install.log
-pip install Flask >> /var/log/sga-teamaviato-StormDetector-install.log
-pip install nose >> /var/log/sga-teamaviato-StormDetector-install.log
-pip install BeautifulSoup4 >> /var/log/sga-teamaviato-StormDetector-install.log
-pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-StormDetector-install.log
-pip install ConfigParser
-pip install requests
-
-nohup python stormdetector.py >> stormdetector.log 2>&1 &
+echo 'Building Docker' >> /var/log/sdetector-docker.log 2>&1
+docker build --build-arg APP_URL=http://s3-us-west-2.amazonaws.com/teamaviatobucket2/aviatoStormDetector.tar.gz -t aviato/python:v1 . >> /var/log/sdetector-docker.log 2>&1
+echo 'Running docker' >> /var/log/sdetector-docker.log 2>&1
+docker run -it --name storm-detector-service -h aviato.python -p 8000:8000 -d aviato/python:v1
