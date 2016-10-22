@@ -11,4 +11,4 @@ RUN npm rebuild --unsafe-perm node-sass
 
 EXPOSE 3000
 
-CMD node /home/ec2-user/gateway-microservice/Gateway_Aviato/app.js
+CMD node /home/ec2-user/gateway-microservice/Gateway_Aviato/app.js >> runlog.log 2>&1 & /bin/bash
