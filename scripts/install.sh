@@ -13,7 +13,7 @@ rm -rf '/home/ec2-user/Gateway'
 #echo "starting the application run weather forecast"
 
 
-cd '/home/ec2-user/gateway-microservice'
+cd '/home/ec2-user/gateway-microservice/Gateway_Aviato'
 
 docker build -t gateway . >> /var/log/dockerggateway.log 2>&1 &
 docker rmi $(docker images | grep "^<none>" | awk "{print $3}") >> /var/log/dockergatewayimage.log 2>&1 &
