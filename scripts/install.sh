@@ -20,4 +20,5 @@ mvn compile war:war
 cd '/home/ec2-user/docker'
 sudo docker login -e="sneha.tilak26@gmail.com" -u="tilaks" -p="teamAviato"
 sudo docker pull tilaks/dataingestor
+sudo docker images | grep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f
 sudo docker run -d -p 8009:8080 --name api-di $(sudo docker images | grep tilaks/dataingestor | awk '{print $3}') >> /var/log/dataingestor.log 2>&1 &
