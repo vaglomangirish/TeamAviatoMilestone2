@@ -9,6 +9,6 @@ cd stormdetection
 
 
 docker build -t sdetect_img .
-docker run -d -p 8000:8000 --name api-sdetect sdetect_img >> sga-teamaviato-StormDetector-docker-server.log 2>&1 &
+docker run -d --net mynet123 --ip 172.18.0.31 -p 8000:8000 --name api-sdetect sdetect_img >> sga-teamaviato-StormDetector-docker-server.log 2>&1 &
 
 
