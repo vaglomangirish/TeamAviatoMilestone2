@@ -14,5 +14,5 @@ cd  /usr/local/tomcat7/apache-tomcat-7.0.72
 
 sudo sh ./bin/startup.sh >> /var/log/tomcat.log 2>&1 &
 
-docker build -t dataingestor .
+docker build -t dataingestor . >> /var/log/dockerlog.log
 docker run -d -p 8888:8080 --name api-di dataingestor >> /var/log/dataingestor.log 2>&1 &
