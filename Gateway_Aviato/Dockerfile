@@ -11,5 +11,5 @@ RUN npm rebuild --unsafe-perm node-sass
 
 EXPOSE 3000
 
-node /usr/src/app/hackathon-starter/app.js
+#node /usr/src/app/hackathon-starter/app.js
 CMD node /usr/src/app/hackathon-starter/app.js
