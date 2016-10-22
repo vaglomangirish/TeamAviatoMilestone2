@@ -1,6 +1,6 @@
 echo "killing any pre existing processes at port"
 
-fuser -k 65000/tcp
+fuser -k 3000/tcp
 
 sleep 10
 

@@ -13,13 +13,17 @@ rm -rf '/home/ec2-user/Gateway'
 #echo "starting the application run weather forecast"
 
 
-cd '/home/ec2-user/gateway-microservice/Gateway_Aviato'
+cd '/home/ec2-user/gateway-microservice'
 
-echo "Fixing node-sass"
+docker build -t gateway . >> /var/log/dockerggateway.log 2>&1 &
+docker rmi $(docker images | grep "^<none>" | awk "{print $3}") >> /var/log/dockergatewayimage.log 2>&1 &
+docker run -d -p 3000:3000 --name api-g gateway >> /var/log/gateway.log 2>&1 &
 
-npm uninstall --save node-sass
-npm install --save node-sass
+#echo "Fixing node-sass"
 
-chmod -R 777 public
+#npm uninstall --save node-sass
+#npm install --save node-sass
 
-node app.js >> debug.log 2>&1 &
+#chmod -R 777 public
+
+#node app.js >> debug.log 2>&1 &

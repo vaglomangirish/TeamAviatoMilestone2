@@ -1,8 +1,14 @@
 language: node_js
+
 node_js:
   - "6"
+
+sudo: required
+
 services:
   - mongodb
+  - docker
+
 env:
   - CXX=g++-4.8
 
