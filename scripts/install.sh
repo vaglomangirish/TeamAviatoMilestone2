@@ -15,8 +15,8 @@ rm -rf '/home/ec2-user/Gateway'
 
 cd '/home/ec2-user/gateway-microservice/Gateway_Aviato'
 
-docker build -t gateway . >> /var/log/dockerggateway.log 2>&1 &
-docker images | grep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f >> /var/log/dockergatewayimage.log 2>&1 &
+docker build -t gateway . >> /var/log/gatewayimagebuild.log 2>&1 &
+docker images | grep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f >> /var/log/gatewayrmi.log 2>&1 &
 #docker rmi -f $(docker images | grep '^<none>' | awk '{print $3}') >> /var/log/dockergatewayimage.log 2>&1 &
 docker run -d -p 3000:3000 --name api-g gateway >> /var/log/gateway.log 2>&1 &
 
