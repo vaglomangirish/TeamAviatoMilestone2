@@ -41,15 +41,22 @@ public class RESTResourceTest
 	@Test
 	public void testGenerateLOG() throws Exception
 	{
-		int responseStatus = restResource.generateLOG(urlObjects);
-		if (responseStatus == 500)
+		try
 		{
-			assertEquals(restResource.generateLOG(urlObjects),500);
-			System.out.println("Registry is down!");
+			int responseStatus = restResource.generateLOG(urlObjects);
+			if (responseStatus == 200)
+			{
+				assertEquals(restResource.generateLOG(urlObjects),200);
+			}
+			else
+			{
+				assertEquals(restResource.generateLOG(urlObjects),responseStatus);
+				System.out.println("Registry is down!");
+			}
 		}
-		else if (responseStatus == 200)
+		catch (Exception exception)
 		{
-			assertEquals(restResource.generateLOG(urlObjects),200);
+			System.out.println("Error Occured!");
 		}		
 	}
 	
