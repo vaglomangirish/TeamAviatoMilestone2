@@ -1,15 +1,14 @@
 FROM node:argon
 
 # Copy the necessary files
-RUN mkdir -p /usr/src/app
-COPY . /usr/src/app
+RUN mkdir -p /home/ec2-user/gateway-microservice/Gateway_Aviato
+COPY . /home/ec2-user/gateway-microservice/Gateway_Aviato
 
-WORKDIR /usr/src/app/hackathon-starter
+WORKDIR /home/ec2-user/gateway-microservice/Gateway_Aviato
 
 RUN npm install
 RUN npm rebuild --unsafe-perm node-sass
 
 EXPOSE 3000
 
-#node /usr/src/app/hackathon-starter/app.js
-CMD node /usr/src/app/hackathon-starter/app.js
+CMD node /home/ec2-user/gateway-microservice/Gateway_Aviato
