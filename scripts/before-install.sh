@@ -29,6 +29,7 @@ if [ "$?" -ne 0 ]; then
 	mvn --version
 fi
 
+sudo yum install -y docker-io
 sudo service docker start
 
 docker ps -a | grep 'dataingestor' | awk '{print $1}' | xargs --no-run-if-empty docker stop
