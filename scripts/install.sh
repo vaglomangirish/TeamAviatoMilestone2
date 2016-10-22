@@ -7,15 +7,5 @@ cd /home/ec2-user/runForecast/
 chmod 777 runforecast
 cd runforecast
 
-echo 'Activating virtualenv for RunForecast Microservice' >> /var/log/sga-teamaviato-RunForecast-install.log
-pip install virtualenv >> /var/log/sga-teamaviato-RunForecast-install.log
-virtualenv env >> /var/log/sga-teamaviato-RunForecast-install.log
-source env/bin/activate >> /var/log/sga-teamaviato-RunForecast-install.log
-pip install Flask >> /var/log/sga-teamaviato-RunForecast-install.log
-pip install nose >> /var/log/sga-teamaviato-RunForecast-install.log
-pip install Flask-SQLAlchemy >> /var/log/sga-teamaviato-RunForecast-install.log
-echo 'Running Flask Server' >> /var/log/sga-teamaviato-RunForecast-install.log
-pip install ConfigParser
-pip install requests
-
-nohup python runforecast.py > /dev/null 2>&1 &
+docker build -t runforecast_img .
+docker run -d -p 8050:8050 --name api-runforecast runforecast_img >> sga-teamaviato-RUnForecast-docker-server.log 2>&1 &
