@@ -17,6 +17,7 @@ mvn compile war:war
 
 #cd '/home/ec2-user/ingestor-microservice/api-ingestor'
 
-docker build -t dataingestor . >> /var/log/dockerlog.log 2>&1 &
-docker images | grep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi >> /var/log/dockerimage.log 2>&1 &
-docker run -d -p 8009:8080 --name api-di dataingestor >> /var/log/dataingestor.log 2>&1 &
+cd '/home/ec2-user/docker'
+sudo docker login -e="sneha.tilak26@gmail.com" -u="tilaks" -p="teamAviato"
+sudo docker pull tilaks/dataingestor
+sudo docker run -d -p 8009:8080 --name api-di $(sudo docker images | grep tilaks/dataingestor | awk '{print $3}') >> /var/log/dataingestor.log 2>&1 &
