@@ -1,2 +1,2 @@
-echo 'killing existing flask process if any'
-sudo kill -9 $(sudo lsof -i :8000 | grep LISTEN) >> processkill.log 2>&1 &
+echo 'Removing existing docker instances' >> /var/log/sdetector-docker.log 2>&1
+docker ps -a | grep 'storm-detector-service' | awk '{print $1}' | xargs --no-run-if-empty docker rm -f storm-detector-service
