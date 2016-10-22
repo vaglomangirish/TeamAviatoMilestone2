@@ -9,6 +9,7 @@ echo 'Installing the Data Ingestor API...'
 cd '/home/ec2-user/ingestor-microservice/api-ingestor'
 
 mvn clean install >> /var/log/tomcat.log
+mvn compile war:war
 #cp target/*.war /usr/local/tomcat7/apache-tomcat-7.0.72/webapps/ >> /var/log/tomcat.log
 #cd  /usr/local/tomcat7/apache-tomcat-7.0.72
 
