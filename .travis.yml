@@ -17,15 +17,14 @@ before_script:
 
 script: nosetests
 
-
 services:
   - docker
 
 before_deploy:
   - cd ..
-  - tar -cvzf aviatoStormDetector.tar.gz stormdetection scripts appspec.yml Dockerfile|| true
+  - zip -r SGA_TeamAviato_StormDetector.zip stormdetection scripts appspec.yml || true
   - mkdir -p "stormDetection"
-  - mv aviatoStormDetector.tar.gz stormDetection/aviatoStormDetector.tar.gz || true
+  - mv SGA_TeamAviato_StormDetector.zip stormDetection/SGA_TeamAviato_StormDetector.zip || true
 
 deploy:
   - provider: s3
@@ -44,8 +43,8 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
     bucket: teamaviatobucket2
-    key: aviatoStormDetector.tar.gz
-    bundle_type: tgz
+    key: SGA_TeamAviato_StormDetector.zip
+    bundle_type: zip
     application: TeamAviatoApp
     deployment_group: TeamAviatoApp
     region: us-west-2

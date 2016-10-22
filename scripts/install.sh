@@ -1,4 +1,14 @@
-echo 'Building Docker' >> /var/log/sdetector-docker.log 2>&1
-docker build --build-arg APP_URL=http://s3-us-west-2.amazonaws.com/teamaviatobucket2/aviatoStormDetector.tar.gz -t sdetect_img . >> /var/log/sdetector-docker.log 2>&1
-echo 'Running docker' >> /var/log/sdetector-docker.log 2>&1
-docker run -it --name storm-detector-service -h aviato.python -p 8000:8000 -d sdetect_img
+echo 'starting installation process' >> /var/log/sga-teamaviato-StormDetector-install.log
+#cd '/home/ec2-user/stormdetection'
+
+rm -r /home/ec2-user/stormDetector
+mv /home/ec2-user/StormDetector  /home/ec2-user/stormDetector
+cd /home/ec2-user/stormDetector/
+chmod 777 stormdetection
+cd stormdetection
+
+
+docker build -t sdetect_img .
+docker run -d -p 8000:8000 --name api-sdetect sdetect_img >> sga-teamaviato-StormDetector-docker-server.log 2>&1 &
+
+
