@@ -33,3 +33,5 @@ sudo service docker start
 
 docker ps -a | grep 'dataingestor' | awk '{print $1}' | xargs --no-run-if-empty docker stop
 docker ps -a | grep 'dataingestor' | awk '{print $1}' | xargs --no-run-if-empty docker rm
+docker images | grep 'dataingestor' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
+docker images | grep 'tomcat' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
