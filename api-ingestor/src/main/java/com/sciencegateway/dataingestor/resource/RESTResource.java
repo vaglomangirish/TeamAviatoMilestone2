@@ -30,6 +30,7 @@ public class RESTResource
 	URLObjects urlObjects = new URLObjects();
 	
 	@GET
+	@Path("/test")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String generateString()
 	{
