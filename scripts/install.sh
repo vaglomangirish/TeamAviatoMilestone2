@@ -14,4 +14,4 @@ cd runforecast
 #fi
 
 docker build -t runforecast_img .
-docker run -d --net="host" -p 8050:8050 --name api-runforecast runforecast_img >> sga-teamaviato-RUnForecast-docker-server.log 2>&1 &
+docker run -d -p 8050:8050 --name api-runforecast runforecast_img >> sga-teamaviato-RUnForecast-docker-server.log 2>&1 &
