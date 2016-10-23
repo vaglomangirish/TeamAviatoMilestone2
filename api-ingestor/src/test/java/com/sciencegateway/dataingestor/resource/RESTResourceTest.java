@@ -35,7 +35,23 @@ public class RESTResourceTest
 		urlObjects.setDate("2001-4-27");
 		urlObjects.setTime("123456");
 		
-		assertEquals(restResource.generateURL(urlObjects).getStatus(),200);
+		try
+		{
+			int responseStatus = restResource.generateURL(urlObjects).getStatus();
+			if (responseStatus == 200)
+			{
+				assertEquals(restResource.generateURL(urlObjects).getStatus(),200);
+			}
+			else
+			{
+				assertEquals(restResource.generateLOG(urlObjects),responseStatus);
+				System.out.println("Storm Detector is down!");
+			}
+		}
+		catch (Exception exception)
+		{
+			System.out.println("Error Occured!");
+		}
 	}
 	
 	@Test
