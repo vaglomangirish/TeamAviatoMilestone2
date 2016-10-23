@@ -36,8 +36,8 @@ sudo service docker start
 sudo kill -9 $(sudo lsof -i :8080 | grep 'LISTEN') >> /var/log/killprocess.log 2>&1 &
 
 #Remove existing containers if any
-docker ps -a | grep 'tilaks/dataingestor' | awk '{print $1}' | xargs --no-run-if-empty docker stop
-docker ps -a | grep 'tilaks/dataingestor' | awk '{print $1}' | xargs --no-run-if-empty docker rm -f
+docker ps -a | grep 'api-di' | awk '{print $1}' | xargs --no-run-if-empty docker stop
+docker ps -a | grep 'api-di' | awk '{print $1}' | xargs --no-run-if-empty docker rm
 
 #Remove existing images if any
 docker images | grep 'tilaks/dataingestor' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f
