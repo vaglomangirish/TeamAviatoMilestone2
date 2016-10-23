@@ -25,5 +25,5 @@ if [ "$?" -ne 0 ]; then
     mkdir /var/lib/mongodb
     mkdir /var/lib/mongodb/data
     mkdir /var/lib/mongodb/data/db
-    mongod --dbpath /var/lib/mongodb/data/db --smallfiles > /dev/null 2>&1 &
+    mongod --dbpath /var/lib/mongodb/data/db --smallfiles > /dev/null 2>&1
 fi
