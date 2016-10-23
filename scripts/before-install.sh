@@ -16,3 +16,11 @@ if [ "$?" -ne 0 ]; then
         node -v
 fi
 rm -rf /home/ec2-user/Gateway
+
+mongo --version
+if [ "$?" -ne 0 ]; then
+    echo "Installing MongoDB"
+    cp mongodb-org-3.0.repo /etc/yum.repos.d
+    yum install -y mongodb-org
+    service mongod start
+fi
