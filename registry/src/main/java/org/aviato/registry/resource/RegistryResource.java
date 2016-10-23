@@ -19,6 +19,7 @@ import org.json.JSONArray;
 public class RegistryResource {	
 	
 	@GET
+	@Path("/get")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getIt() {
 	    return "Got it!";
