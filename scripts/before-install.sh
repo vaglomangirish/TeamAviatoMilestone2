@@ -32,9 +32,6 @@ fi
 sudo yum install -y docker-io
 sudo service docker start
 
-#Kill processes on PORT 8080
-sudo kill -9 $(sudo lsof -i :8080 | grep 'LISTEN') >> /var/log/killprocess.log 2>&1 &
-
 #Remove existing containers if any
 docker ps -a | grep 'api-di' | awk '{print $1}' | xargs --no-run-if-empty docker stop
 docker ps -a | grep 'api-di' | awk '{print $1}' | xargs --no-run-if-empty docker rm
