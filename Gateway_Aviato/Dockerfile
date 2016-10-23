@@ -11,4 +11,4 @@ RUN npm rebuild --unsafe-perm node-sass
 
 EXPOSE 3000
 
-CMD node app.js >> runlog.log 2>&1 ; tail -f /dev/null
+CMD node app.js >> runlog.log ; tail -f /dev/null
