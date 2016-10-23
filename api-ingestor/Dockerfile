@@ -4,4 +4,4 @@ FROM tomcat:8-jre8
 ADD target/dataingestor.war /usr/local/tomcat/webapps/
 
 #Exposing port
-EXPOSE 8080
+EXPOSE 9000
