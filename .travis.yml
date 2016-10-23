@@ -12,10 +12,10 @@ services:
 
 install:
   - cd "api-ingestor" && mvn clean install -DskipTests=true
-  - docker build -t tilaks/dataingestor .
+  - docker build -t tilaks/dataingestortest .
   - docker ps -a
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push tilaks/dataingestor
+  - docker push tilaks/dataingestortest
 
 script: mvn clean install -DskipTests=true
 
