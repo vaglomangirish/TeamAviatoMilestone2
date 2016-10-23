@@ -5,4 +5,3 @@ ADD target/dataingestor.war /usr/local/tomcat/webapps/
 
 #Expose port
 EXPOSE 8080
-EXPOSE 11000
