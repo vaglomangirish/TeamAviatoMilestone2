@@ -8,10 +8,10 @@ chmod 777 runforecast
 cd runforecast
 
 #setup bridge network
-docker network ls | grep 'mynet123'
-if [ $? ne 0 ]; then
-  docker network create --subnet=172.18.0.0/16 mynet123
-fi
+#docker network ls | grep 'mynet123'
+#if [ $? ne 0 ]; then
+#  docker network create --subnet=172.18.0.0/16 mynet123
+#fi
 
 docker build -t runforecast_img .
-docker run -d -p 8050:8050 --name api-runforecast runforecast_img >> sga-teamaviato-RUnForecast-docker-server.log 2>&1 &
+docker run -d --net="host" -p 8050:8050 --name api-runforecast runforecast_img >> sga-teamaviato-RUnForecast-docker-server.log 2>&1 &
