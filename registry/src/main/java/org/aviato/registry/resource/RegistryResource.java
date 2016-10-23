@@ -15,18 +15,17 @@ import org.aviato.registry.POJO.RegistryPOJO;
 import org.aviato.registry.service.RegistryServices;
 import org.json.JSONArray;
 
-
-@Path("service")
+@Path("/service")
 public class RegistryResource {	
 	
-	 @GET
-	 @Produces(MediaType.TEXT_PLAIN)
-	 public String getIt() {
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getIt() {
 	    return "Got it!";
-	 }
-	 
-	 RegistryServices registryServices = new RegistryServices();	
-		
+	}	
+	
+	RegistryServices registryServices = new RegistryServices();	
+	
 	/*Function to retrieve user logs when requested by UI*/
 	@POST
 	@Path("/user")
