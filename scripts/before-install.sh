@@ -22,5 +22,8 @@ if [ "$?" -ne 0 ]; then
     echo "Installing MongoDB"
     cp mongodb-org-3.0.repo /etc/yum.repos.d
     yum install -y mongodb-org
-    service mongod start --smallfiles
+    mkdir /var/lib/mongodb
+    mkdir /var/lib/mongodb/data
+    mkdir /var/lib/mongodb/data/db
+    mongod --dbpath /var/lib/mongodb/data/db --smallfiles > /dev/null 2>&1 &
 fi
