@@ -33,9 +33,8 @@ sudo yum install -y docker-io
 sudo service docker start
 
 #Remove existing containers if any
-docker ps -a | grep 'api-di' | awk '{print $1}' | xargs --no-run-if-empty docker stop
-docker ps -a | grep 'api-di' | awk '{print $1}' | xargs --no-run-if-empty docker rm
+docker ps -a | grep -w "api-di" | awk '{print $1}' | xargs --no-run-if-empty docker stop
+docker ps -a | grep -w "api-di" | awk '{print $1}' | xargs --no-run-if-empty docker rm
 
 #Remove existing images if any
-docker images | grep 'tilaks/dataingestor' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f
-docker images | grep 'tomcat' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f
+docker images | grep -w "tilaks/dataingestor" | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f
