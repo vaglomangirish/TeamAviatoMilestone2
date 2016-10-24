@@ -30,7 +30,7 @@ exports.postWeather = (req, res, next) => {
 
   var requestSuccess = 0;
   request({ // Request to the Data Ingestor
-    url: 'http://127.0.0.1:9000/dataingestor/webapi/service/url',
+    url: 'http://ec2-35-160-243-251.us-west-2.compute.amazonaws.com:9000/dataingestor/webapi/service/url',
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     json: userRequest
@@ -53,7 +53,7 @@ exports.postWeather = (req, res, next) => {
         //console.log('The req ID is - ' + the_object.requestId);
 
     	request({ // Request to the storm detector
-    		url: 'http://127.0.0.1:8000/stormdetector/v1/service',
+    		url: 'http://ec2-35-160-243-251.us-west-2.compute.amazonaws.com:8000/stormdetector/v1/service',
     		method: 'POST',
     		headers: { 'Content-Type': 'application/json' },
     		json: diResponse
@@ -72,7 +72,7 @@ exports.postWeather = (req, res, next) => {
 
     			if(body.trigger_response == 'Yes'){
     				request({
-    					url: 'http://127.0.0.1:8050/runforecast/v1/service',
+    					url: 'http://ec2-35-160-243-251.us-west-2.compute.amazonaws.com:8050/runforecast/v1/service',
     					method: 'POST',
     					headers: { 'Content-Type': 'application/json' },
     					json: diResponse
