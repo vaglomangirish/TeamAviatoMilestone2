@@ -90,7 +90,7 @@ public class RESTResource
 		ClientConfig clientConfigR = new ClientConfig();
 		Client clientR = ClientBuilder.newClient(clientConfigR);
 		clientR.property(ClientProperties.CONNECT_TIMEOUT, 5000);
-		WebTarget targetR = clientR.target("http://"+properties.getProperty("dnsName")+":8080/registry/v1/service/log");
+		WebTarget targetR = clientR.target("http://"+properties.getProperty("dnsName")+":8082/registry/v1/service/log");
 		System.out.println(targetR.toString());
 		Response responseToR = targetR.request().post(Entity.entity(jsonObject.toString(), "application/json"),Response.class);
 		System.out.println(responseToR.toString());
