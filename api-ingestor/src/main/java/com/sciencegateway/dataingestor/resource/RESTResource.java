@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import com.sciencegateway.dataingestor.POJO.URLObjects;
 import com.sciencegateway.dataingestor.service.URLConverter;
 
-@Path("/service")
+@Path("/test")
 public class RESTResource 
 {
 	URLConverter urlConverter = new URLConverter();
@@ -36,7 +36,7 @@ public class RESTResource
 	InputStream inputStream = null;
 	
 	@GET
-	@Path("/test")
+	@Path("/try")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String generateString()
 	{
