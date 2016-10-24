@@ -6,6 +6,7 @@ from flask import json
 from flask import request
 import requests
 from logging import FileHandler, WARNING
+import os
 
 app = Flask(__name__)
 if not app.debug:
@@ -19,6 +20,7 @@ def test():
 
 @app.route('/stormclustering/v1/service/kml', methods=['POST'])
 def generatecluster():
+	os.sleep(3)
     request_data = request.get_json()
     userName=request_data['userName']
     requestId=request_data['requestId']
@@ -76,4 +78,4 @@ def performclustering(kmldata):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=31000)
+    app.run(host='0.0.0.0',port=41000)
