@@ -6,6 +6,7 @@ from flask import json
 from flask import request
 import requests
 import random
+import time
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,6 +15,7 @@ def test():
 
 @app.route('/runforecast/v1/service',methods=['POST'])
 def generatecluster():
+    time.sleep(3)
     request_data = request.get_json()
     userName = request_data['userName']
     requestId = request_data['requestId']
