@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/StormClustering
+    destination: /home/ec2-user/StormClustering-Test
 hooks:
   BeforeInstall:
     - location: scripts/before-install.sh
