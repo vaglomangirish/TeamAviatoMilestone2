@@ -1,4 +1,3 @@
-import os
 from configparser import ConfigParser
 
 import requests
@@ -6,7 +5,7 @@ from flask import Flask
 from flask import Response
 from flask import json
 from flask import request
-
+import time
 app = Flask(__name__)
 
 @app.route('/')
@@ -15,6 +14,7 @@ def test():
 
 @app.route('/stormdetector/v1/service', methods=['POST'])
 def sendkml():
+    time.sleep(3)
     data=request.get_json()
     userName=data['userName']
     requestId=data['requestId']
@@ -23,7 +23,6 @@ def sendkml():
     #---------------------------------------------------------
     #connect to registry
     try:
-        os.sleep(3)
         config = ConfigParser()
         config.read('config.ini')
         host1 = config.get('registryConfig', 'ipaddress1')
