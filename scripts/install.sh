@@ -3,7 +3,7 @@ echo 'starting installation process' >> /var/log/sga-teamaviato-StormClustering-
 
 rm -r /home/ec2-user/stormClustering-test
 mv /home/ec2-user/StormClustering-test  /home/ec2-user/stormClustering-test
-cd /home/ec2-user/stormClustering/
+cd /home/ec2-user/stormClustering-test/
 chmod 777 stormclustering
 cd stormclustering
 
