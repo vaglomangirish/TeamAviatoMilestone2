@@ -14,6 +14,6 @@ if [ $? ne 0 ]; then
 fi
 
 docker build -t sdetect_img_test . >> sDetect-test-img-build.log
-docker run -d --net mynet123 --ip 172.18.0.41 -p 9000:9000 --name api-sdetect-test sdetect_img_test >> sga-teamaviato-StormDetector-test-docker-server.log 2>&1 &
+docker run -d --net mynet123 --ip 172.18.0.41 -p 9500:9500 --name api-sdetect-test sdetect_img_test >> sga-teamaviato-StormDetector-test-docker-server.log 2>&1 &
 
 
