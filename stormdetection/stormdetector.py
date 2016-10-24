@@ -1,3 +1,4 @@
+import os
 from configparser import ConfigParser
 
 import requests
@@ -22,6 +23,7 @@ def sendkml():
     #---------------------------------------------------------
     #connect to registry
     try:
+        os.sleep(3)
         config = ConfigParser()
         config.read('config.ini')
         host1 = config.get('registryConfig', 'ipaddress1')
@@ -61,4 +63,4 @@ def getkmlfile(yy,mm,dd,station,filename):
     return 'KML_output.kml'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=8000)
+    app.run(host='0.0.0.0',port=9000)
