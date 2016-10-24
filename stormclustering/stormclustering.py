@@ -6,7 +6,7 @@ from flask import json
 from flask import request
 import requests
 from logging import FileHandler, WARNING
-import os
+import time
 
 app = Flask(__name__)
 if not app.debug:
@@ -20,7 +20,7 @@ def test():
 
 @app.route('/stormclustering/v1/service/kml', methods=['POST'])
 def generatecluster():
-    os.sleep(3)
+    time.sleep(3)
     request_data = request.get_json()
     userName=request_data['userName']
     requestId=request_data['requestId']
