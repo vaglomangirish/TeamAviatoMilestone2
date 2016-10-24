@@ -1,10 +1,7 @@
 package com.sciencegateway.dataingestor.resource;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.text.ParseException;
-import java.util.Properties;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -31,9 +28,6 @@ public class RESTResource
 {
 	URLConverter urlConverter = new URLConverter();
 	URLObjects urlObjects = new URLObjects();
-	
-	Properties properties = new Properties();
-	InputStream inputStream = null;
 	
 	@GET
 	@Path("/try")
