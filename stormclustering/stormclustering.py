@@ -20,7 +20,7 @@ def test():
 
 @app.route('/stormclustering/v1/service/kml', methods=['POST'])
 def generatecluster():
-	os.sleep(3)
+    os.sleep(3)
     request_data = request.get_json()
     userName=request_data['userName']
     requestId=request_data['requestId']
