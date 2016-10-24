@@ -36,7 +36,7 @@ public class RESTResource
 	InputStream inputStream = null;
 	
 	@GET
-	@Path("/test")
+	@Path("/try")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String generateString()
 	{
