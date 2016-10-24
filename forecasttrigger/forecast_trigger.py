@@ -6,6 +6,8 @@ from flask import Response
 from flask import json
 from flask import request
 import random
+import os
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,6 +16,7 @@ def test():
 
 @app.route('/forecasttrigger/v1/service/trigger',methods=['POST'])
 def trigger_forecast():
+    os.sleep(3)
     request_data = request.get_json()
     userName = request_data['userName']
     requestId = request_data['requestId']
@@ -44,4 +47,4 @@ def trigger_forecast():
     return json.dumps({'trigger_response':trigger_response})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=32000)
+    app.run(host='0.0.0.0',port=42000)
