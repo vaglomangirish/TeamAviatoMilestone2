@@ -36,13 +36,13 @@ exports.postWeather = (req, res, next) => {
     json: userRequest
   }, function(error, response, body){
     if(error) {
-    	//console.log(error);
-        //console.log(response.statusCode, body);
-        requestSuccess = -1;
+    	console.log('Generic error while connecting to the data ingestor');
+      console.log(error);
+      requestSuccess = -1;
     }
     else if(response.statusCode != 200){
     	console.log('There was an error connecting to the Data Ingestor. Response: ' + response.statusCode);
-        requestSuccess = 1;
+      requestSuccess = 1;
     }
     else if (response.statusCode == 200){
     	console.log('Response from Data Ingestor is: ' + response.statusCode);
@@ -60,11 +60,11 @@ exports.postWeather = (req, res, next) => {
     	}, function(error, response, body){
     		if(error){
     			console.log('Generic error while connecting to the storm detector.');
-    			//console.log(response.statusCode, body);
+    			console.log(error);
     			requestSuccess = -1;
     		}
     		else if(response.statusCode != 200){
-    			//console.log(response.statusCode + ' while connecting to the storm detector. ReqId is: ' + reqId);
+    			console.log(response.statusCode + ' while connecting to the storm detector. ReqId is: ' + reqId);
     			requestSuccess = 2;
     		}
     		else if(response.statusCode == 200){
@@ -79,11 +79,11 @@ exports.postWeather = (req, res, next) => {
     				}, function(error, response, body){
     					if(error){
     						console.log('Generic error while connecting to the forecaster.');
-    						console.log(response.statusCode, body);
+    						console.log(error);
     						requestSuccess = -1;
     					}
     					else if(response.statusCode != 200){
-    						//console.log('Error while connecting to the run forecaster. ReqId is: ' + reqId);
+    						console.log('Error code ' + response.statusCode + ' while connecting to the run forecaster. ReqId is: ' + reqId);
     						requestSuccess = 3;
     					}
     					else if(response.statusCode == 200){

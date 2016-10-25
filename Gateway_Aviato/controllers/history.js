@@ -17,7 +17,7 @@ exports.getHistory = (req, res) => {
   }, function(error, response, body){
   	if(error){
   		console.log('Generic error while connecting to the registry.');
-  		//console.log(response.statusCode, body);
+  		console.log(error);
   	}
   	else if(response.statusCode != 200){
   		console.log(response.statusCode + ' while connecting to the storm detector. ReqId is: ' + reqId);
