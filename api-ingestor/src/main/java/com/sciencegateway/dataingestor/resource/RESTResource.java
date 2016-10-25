@@ -50,7 +50,7 @@ public class RESTResource
 		JSONObject jsonObject = new JSONObject();
 		try 
 		{
-			TimeUnit.MINUTES.sleep(1);
+			TimeUnit.SECONDS.sleep(20);
 			urlObjects = urlConverter.getURL(urlObjects);
 			System.out.println(urlObjects);
 			jsonObject.put("requestId", urlObjects.getRequestId());
@@ -84,7 +84,7 @@ public class RESTResource
 		ClientConfig clientConfigR = new ClientConfig();
 		Client clientR = ClientBuilder.newClient(clientConfigR);
 		clientR.property(ClientProperties.CONNECT_TIMEOUT, 5000);
-		TimeUnit.MINUTES.sleep(1);
+		TimeUnit.SECONDS.sleep(20);
 		WebTarget targetR = clientR.target("http://ec2-35-160-243-251.us-west-2.compute.amazonaws.com:8082/registry/v1/service/log");
 		System.out.println(targetR.toString());
 		Response responseToR = targetR.request().post(Entity.entity(jsonObject.toString(), "application/json"),Response.class);
