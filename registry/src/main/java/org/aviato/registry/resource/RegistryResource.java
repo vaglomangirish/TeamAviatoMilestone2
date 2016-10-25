@@ -1,6 +1,7 @@
 package org.aviato.registry.resource;
 
 import java.sql.Connection;
+import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -15,14 +16,14 @@ import org.aviato.registry.POJO.RegistryPOJO;
 import org.aviato.registry.service.RegistryServices;
 import org.json.JSONArray;
 
-@Path("/service")
+@Path("/test")
 public class RegistryResource {	
 	
 	@GET
 	@Path("/get")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getIt() {
-	    return "Got it!";
+	    return "Got it! - Test Environment";
 	}	
 	
 	RegistryServices registryServices = new RegistryServices();	
@@ -36,6 +37,9 @@ public class RegistryResource {
 	{		
 		Connection conn;
 		try {
+			
+			TimeUnit.SECONDS.sleep(2);
+			
 			conn = registryServices.makeConnection();
 			JSONArray resultJson = registryServices.getUserLog(conn, log);
 			registryServices.closeConnection(conn);
@@ -53,6 +57,8 @@ public class RegistryResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addLog(RegistryPOJO log) throws Exception{
+		
+		TimeUnit.SECONDS.sleep(2);
 
 		Connection conn = registryServices.makeConnection();
 		registryServices.addLogToRegistry(conn, log);

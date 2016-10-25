@@ -2,7 +2,7 @@
 language: java
 branches:
   only:
-    - api-registry
+    - api-registry-test
 jdk:
   - oraclejdk8
 sudo: false
@@ -12,9 +12,9 @@ script: cd "registry" && mvn clean install -DskipTests=true
 
 before_deploy:
   - cd ..
-  - zip -r SGA_Aviato_Registry.zip registry scripts appspec.yml || true
+  - zip -r SGA_Aviato_RegistryTest.zip registry scripts appspec.yml || true
   - mkdir -p "registry_upload"
-  - mv SGA_Aviato_Registry.zip registry_upload/SGA_Aviato_Registry.zip || true
+  - mv SGA_Aviato_RegistryTest.zip registry_upload/SGA_Aviato_RegistryTest.zip || true
   
 deploy:
   - provider: s3
@@ -27,7 +27,7 @@ deploy:
     acl: public_read
     detect_encoding: true
     on:
-      branch: api-registry
+      branch: api-registry-test
       
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
@@ -40,5 +40,5 @@ deploy:
     region: us-west-2
     skip_cleanup: true
     on:
-      branch: api-registry
+      branch: api-registry-test
     
