@@ -7,10 +7,10 @@
     <artifactId>registrytest</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>registry</name>
+    <name>registrytest</name>
 
     <build>
-        <finalName>registry</finalName>
+        <finalName>registrytest</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
