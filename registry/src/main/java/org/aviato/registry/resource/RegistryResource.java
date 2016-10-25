@@ -16,7 +16,7 @@ import org.aviato.registry.POJO.RegistryPOJO;
 import org.aviato.registry.service.RegistryServices;
 import org.json.JSONArray;
 
-@Path("/test")
+@Path("/service")
 public class RegistryResource {	
 	
 	@GET

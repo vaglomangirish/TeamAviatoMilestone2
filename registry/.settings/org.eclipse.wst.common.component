@@ -4,7 +4,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <property name="context-root" value="registry"/>
-        <property name="java-output-path" value="/registry/target/classes"/>
+        <property name="java-output-path" value="/registrytest/target/classes"/>
+        <property name="context-root" value="registrytest"/>
     </wb-module>
 </project-modules>
