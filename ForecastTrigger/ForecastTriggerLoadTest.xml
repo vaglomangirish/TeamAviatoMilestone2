@@ -1,0 +1,3 @@
+Test Step,min,max,avg,last,cnt,tps,bytes,bps,err,rat
+ForecastTrigger - FT_Request,195,4699,571.34,918,4475,74.46,118590,1973,0,0
+TestCase:,195,4699,571.34,918,4475,74.46,118590,1973,0,0
